@@ -36,36 +36,7 @@ O objetivo é validar os cenários mais importantes das funcionalidades:
 ✅ Finalizar compra 
 
 ## 📂 Estrutura do Projeto
-
-desafio-api-QA/
- ├── pom.xml
- ├── README.md
- └── src
-      └── test
-           ├── java
-           │    └── br/com/serverest/api
-           │          ├── login
-           │          │    └── LoginTest.java
-           │          ├── usuarios
-           │          │    └── UsuariosTest.java
-           │          ├── produtos
-           │          │    └── ProdutosTest.java
-           │          ├── carrinhos
-           │          │    └── CarrinhoTest.java
-           │          └── utils
-           │               └── BaseTest.java
-           └── resources
-                └── payloads
-                     ├── loginAdm.json
-                     ├── loginSucesso.json
-                     ├── loginSenhaInvalida.json
-                     ├── usuarioNovo.json
-                     ├── usuarioEmailDuplicado.json
-                     ├── produtoNovo.json
-                     ├── produtoSemToken.json
-                     └── carrinhoNovo.json
-
-
+<img width="674" height="549" alt="image" src="https://github.com/user-attachments/assets/c307bdd5-ef45-4b67-92a3-baa1106f368e" />
 
 
 ## 🧪 Executar testes pela IDE
