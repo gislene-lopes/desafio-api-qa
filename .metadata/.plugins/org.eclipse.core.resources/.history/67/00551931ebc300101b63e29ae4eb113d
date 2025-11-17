@@ -1,0 +1,77 @@
+# Desafio API QA — ServeRest
+
+Este projeto contém a automação de testes de API utilizando a API pública https://serverest.dev.
+
+## Ferramentas utilizadas
+- Java 17
+- Maven
+- RestAssured
+- JUnit 5
+
+---
+
+## 🎯 Levantamento de Cenários (Completos)
+
+### ✔ Login
+- Login com sucesso
+- Login com senha inválida
+- Login com email inexistente
+- Login sem email
+- Login sem senha
+- Login com payload vazio
+- Login com formato inválido
+
+### ✔ Usuários
+- Criar usuário com sucesso
+- Criar usuário com email duplicado
+- Buscar usuários
+- Buscar por ID
+- Editar usuário
+- Deletar usuário
+
+### ✔ Produtos
+- Criar produto com token
+- Criar produto sem token
+- Buscar produtos
+- Buscar por ID
+- Editar produto
+- Apagar produto
+
+### ✔ Carrinhos
+- Criar carrinho
+- Criar carrinho inválido
+- Buscar carrinho
+- Finalizar compra
+- Cancelar compra
+
+---
+
+## 🎯 Cenários Automatizados (8 no total):
+
+### Login
+1. Login com sucesso  
+2. Login com senha inválida  
+
+### Usuários
+1. Criar usuário com sucesso  
+2. Criar usuário com email duplicado  
+
+### Produtos
+1. Cadastrar produto com token  
+2. Cadastrar produto sem token  
+
+### Carrinhos
+1. Criar carrinho  
+2. Finalizar compra  
+
+---
+
+## ▶️ Como executar
+
+Na raiz do projeto, execute:
+
+
+---
+
+Pronto! 😊  
+Qualquer dúvida, estou à disposição!

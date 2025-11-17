@@ -1,0 +1,76 @@
+package br.com.serverest.api.produtos;
+
+import br.com.serverest.api.utils.BaseTest;
+import org.junit.jupiter.api.Test;
+import java.util.UUID;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
+public class ProdutosTest extends BaseTest {
+
+    // Token de ADM válido da ServeRest
+    private String tokenAdm = """
+            {
+                "email": "fulano@qa.com",
+                "password": "teste"
+            }
+            """;
+
+    public String obterToken() {
+        return given()
+                .contentType("application/json")
+                .body(tokenAdm)
+        .when()
+                .post("/login")
+        .then()
+                .extract()
+                .path("authorization");
+    }
+
+    @Test
+    public void cadastrarProdutoComSucesso() {
+        String token = obterToken();
+
+        String payload = """
+                {
+                    "nome": "Produto QA %s",
+                    "preco": 50,
+                    "descricao": "Produto teste",
+                    "quantidade": 10
+                }
+                """.formatted(UUID.randomUUID());
+
+        given()
+            .contentType("application/json")
+            .header("authorization", token)
+            .body(payload)
+        .when()
+            .post("/produtos")
+        .then()
+            .statusCode(201)
+            .body("message", equalTo("Cadastro realizado com sucesso"));
+    }
+
+
+    @Test
+    public void cadastrarProdutoSemToken() {
+        String payload = """
+                {
+                    "nome": "Produto Teste",
+                    "preco": 50,
+                    "descricao": "Produto teste",
+                    "quantidade": 10
+                }
+                """;
+
+        given()
+            .contentType("application/json")
+            .body(payload)
+        .when()
+            .post("/produtos")
+        .then()
+            .statusCode(401)
+            .body("message", equalTo("Token de acesso ausente, inválido ou expirado"));
+    }
+}

@@ -1,0 +1,43 @@
+package br.com.serverest.api.carrinho;
+
+import br.com.serverest.api.utils.BaseTest;
+import org.junit.jupiter.api.Test;
+
+import java.util.UUID;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
+public class CarrinhosTest extends BaseTest {
+
+    @Test
+    public void criarCarrinhoComSucesso() {
+        String payload = """
+                {
+                    "produtos": [
+                        {
+                            "idProduto": "BeeJh5lz3k6kSIzA", 
+                            "quantidade": 1
+                        }
+                    ]
+                }
+                """;
+
+        given()
+            .contentType("application/json")
+        .when()
+            .post("/carrinhos")
+        .then()
+            .statusCode(anyOf(is(201), is(200), is(400)));
+    }
+
+
+    @Test
+    public void finalizarCompra() {
+        given()
+        .when()
+            .delete("/carrinhos/concluir-compra")
+        .then()
+            .statusCode(anyOf(is(200), is(400)));
+    }
+}

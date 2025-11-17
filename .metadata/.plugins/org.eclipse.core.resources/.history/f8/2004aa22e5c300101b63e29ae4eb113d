@@ -1,0 +1,31 @@
+package br.com.serverest.api.login;
+
+import br.com.serverest.api.utils.BaseTest;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
+public class LoginTest extends BaseTest {
+
+	// caminho_do_payload_de_login_com_sucesso
+	@Test
+	public void loginComSucesso() {
+
+		File payload = new File("src/test/resources/payloads/loginSucesso.json");
+		given().contentType("application/json").body(payload).when().post("/login").then().statusCode(200)
+				.body("message", equalTo("Login realizado com sucesso"));
+	}
+
+	// caminho_do_payload_com_senha_errada
+	@Test
+	public void loginComSenhaInvalida() {
+
+		File payload = new File("src/test/resources/payloads/loginSenhaInvalida.json");
+
+		given().contentType("application/json").body(payload).when().post("/login").then().statusCode(401)
+				.body("message", equalTo("Email e/ou senha inválidos"));
+	}
+}

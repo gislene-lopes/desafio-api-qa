@@ -1,0 +1,55 @@
+package br.com.serverest.api.usuarios;
+
+import br.com.serverest.api.utils.BaseTest;
+import org.junit.jupiter.api.Test;
+import java.util.UUID;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
+public class UsuariosTest extends BaseTest {
+
+    @Test
+    public void criarUsuarioComSucesso() {
+        String emailRandom = "gislene.qa+" + UUID.randomUUID() + "@test.com";
+
+        String payload = """
+                {
+                  "nome": "Gislene QA",
+                  "email": "%s",
+                  "password": "1234",
+                  "administrador": "true"
+                }
+                """.formatted(emailRandom);
+
+        given()
+            .contentType("application/json")
+            .body(payload)
+        .when()
+            .post("/usuarios")
+        .then()
+            .statusCode(201)
+            .body("message", containsString("Cadastro realizado com sucesso"));
+    }
+
+
+    @Test
+    public void criarUsuarioEmailDuplicado() {
+        String payload = """
+                {
+                  "nome": "Fulano",
+                  "email": "fulano@qa.com",
+                  "password": "1234",
+                  "administrador": "true"
+                }
+                """;
+
+        given()
+            .contentType("application/json")
+            .body(payload)
+        .when()
+            .post("/usuarios")
+        .then()
+            .statusCode(400)
+            .body("message", equalTo("Este email já está sendo usado"));
+    }
+}

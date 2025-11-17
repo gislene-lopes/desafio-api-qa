@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UsuariosTest" project="serverest-api-tests" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.serverest.api.usuarios.UsuariosTest" time="2.782" displayname="UsuariosTest" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.usuarios.UsuariosTest]">
+    <testcase name="criarUsuarioComSucesso" classname="br.com.serverest.api.usuarios.UsuariosTest" time="2.408" displayname="criarUsuarioComSucesso()" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.usuarios.UsuariosTest]/[method:criarUsuarioComSucesso()]"/>
+    <testcase name="criarUsuarioEmailDuplicado" classname="br.com.serverest.api.usuarios.UsuariosTest" time="0.373" displayname="criarUsuarioEmailDuplicado()" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.usuarios.UsuariosTest]/[method:criarUsuarioEmailDuplicado()]"/>
+  </testsuite>
+</testrun>

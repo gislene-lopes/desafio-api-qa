@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LoginTest" project="serverest-api-tests" tests="2" started="0" failures="0" errors="1" ignored="0">
+  <testsuite name="br.com.serverest.api.login.LoginTest" incomplete="true" displayname="LoginTest" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.login.LoginTest]">
+    <error>java.lang.Error: Unresolved compilation problem: 
+&#13;
+	at br.com.serverest.api.utils.BaseTest.setup(Basetest.java:9)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    <testcase name="loginComSenhaInvalida" classname="br.com.serverest.api.login.LoginTest" incomplete="true" displayname="loginComSenhaInvalida()" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.login.LoginTest]/[method:loginComSenhaInvalida()]"/>
+    <testcase name="loginComSucesso" classname="br.com.serverest.api.login.LoginTest" incomplete="true" displayname="loginComSucesso()" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.login.LoginTest]/[method:loginComSucesso()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LoginTest" project="serverest-api-tests" tests="2" started="2" failures="0" errors="2" ignored="0">
+  <testsuite name="br.com.serverest.api.login.LoginTest" time="0.02" displayname="LoginTest" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.login.LoginTest]">
+    <testcase name="loginComSenhaInvalida" classname="br.com.serverest.api.login.LoginTest" time="0.017" displayname="loginComSenhaInvalida()" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.login.LoginTest]/[method:loginComSenhaInvalida()]">
+      <error>java.lang.Error: Unresolved compilation problem: 
+	The Java feature 'Text Blocks' is only available with source level 15 and above
+&#13;
+	at br.com.serverest.api.login.LoginTest.loginComSenhaInvalida(LoginTest.java:33)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="loginComSucesso" classname="br.com.serverest.api.login.LoginTest" time="0.002" displayname="loginComSucesso()" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.login.LoginTest]/[method:loginComSucesso()]">
+      <error>java.lang.Error: Unresolved compilation problem: 
+	The Java feature 'Text Blocks' is only available with source level 15 and above
+&#13;
+	at br.com.serverest.api.login.LoginTest.loginComSucesso(LoginTest.java:13)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

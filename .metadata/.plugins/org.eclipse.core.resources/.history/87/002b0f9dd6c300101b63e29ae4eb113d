@@ -1,0 +1,49 @@
+package br.com.gislene.api.login;
+
+import br.com.gislene.api.utils.BaseTest;
+import org.junit.jupiter.api.Test;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
+public class LoginTest extends BaseTest {
+
+    @Test
+    public void loginComSucesso() {
+        String payload = """
+                {
+                    "email": "fulano@qa.com",
+                    "password": "teste"
+                }
+                """;
+
+        given()
+            .contentType("application/json")
+            .body(payload)
+        .when()
+            .post("/login")
+        .then()
+            .statusCode(200)
+            .body("message", equalTo("Login realizado com sucesso"));
+    }
+
+
+    @Test
+    public void loginComSenhaInvalida() {
+        String payload = """
+                {
+                    "email": "fulano@qa.com",
+                    "password": "errada"
+                }
+                """;
+
+        given()
+            .contentType("application/json")
+            .body(payload)
+        .when()
+            .post("/login")
+        .then()
+            .statusCode(401)
+            .body("message", equalTo("Email e/ou senha inválidos"));
+    }
+}

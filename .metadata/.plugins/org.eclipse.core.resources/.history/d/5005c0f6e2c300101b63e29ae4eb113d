@@ -1,0 +1,102 @@
+package br.com.serverest.api.carrinhos;
+
+import br.com.serverest.api.utils.BaseTest;
+import org.junit.jupiter.api.Test;
+
+import java.util.UUID;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
+public class CarrinhoTest extends BaseTest {
+
+	
+	// Criar_usuário_comum
+	public String criarUsuarioComum(String email) {
+
+		String payload = """
+				    {
+				      "nome": "Usuario Carrinho",
+				      "email": "%s",
+				      "password": "1234",
+				      "administrador": "false"
+				    }
+				""".formatted(email);
+
+		return given().contentType("application/json").body(payload).when().post("/usuarios").then()
+				.statusCode(anyOf(is(201), is(400))) // 400 se email já existe
+				.extract().path("_id");
+	}
+
+    //Pegar_token
+	public String login(String email) {
+
+		String payload = """
+				    {
+				        "email": "%s",
+				        "password": "1234"
+				    }
+				""".formatted(email);
+
+		return given().contentType("application/json").body(payload).when().post("/login").then().statusCode(200)
+				.extract().path("authorization");
+	}
+
+	@Test
+	public void criarCarrinhoComSucesso() {
+
+		// Criar_usuário_comum
+		String email = "user_" + UUID.randomUUID() + "@qa.com";
+		criarUsuarioComum(email);
+
+		// Login_do_usuário
+		String token = login(email);
+
+		// Montar_carrinho
+		String payload = """
+				    {
+				        "produtos": [
+				            {
+				                "idProduto": "BeeJh5lz3k6kSIzA",
+				                "quantidade": 1
+				            }
+				        ]
+				    }
+				""";
+
+		// Criar_carrinho_com_sucesso
+		given().contentType("application/json").header("authorization", token).body(payload).when().post("/carrinhos")
+				.then().statusCode(anyOf(is(201), is(200)))
+				.body("message", containsString("Cadastro realizado com sucesso"));
+	}
+
+	@Test
+	public void finalizarCompra() {
+
+		// Criar_usuário
+		String email = "user2_" + UUID.randomUUID() + "@qa.com";
+		criarUsuarioComum(email);
+
+		// Login
+		String token = login(email);
+
+		// Criar_carrinho_primeiro
+		String payload = """
+				    {
+				        "produtos": [
+				            {
+				                "idProduto": "BeeJh5lz3k6kSIzA",
+				                "quantidade": 1
+				            }
+				        ]
+				    }
+				""";
+
+		given().contentType("application/json").header("authorization", token).body(payload).when().post("/carrinhos")
+				.then().statusCode(anyOf(is(201), is(200)));
+
+		// Agora_finalizar_compra
+		given().header("authorization", token).when().delete("/carrinhos/concluir-compra").then().statusCode(200)
+				.body("message", containsString("Compra concluída com sucesso"));
+	}
+}

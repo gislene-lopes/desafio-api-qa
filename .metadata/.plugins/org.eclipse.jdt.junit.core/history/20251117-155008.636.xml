@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProdutosTest" project="serverest-api-tests" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.serverest.api.produtos.ProdutosTest" time="3.098" displayname="ProdutosTest" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.produtos.ProdutosTest]">
+    <testcase name="cadastrarProdutoSemToken" classname="br.com.serverest.api.produtos.ProdutosTest" time="2.338" displayname="cadastrarProdutoSemToken()" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.produtos.ProdutosTest]/[method:cadastrarProdutoSemToken()]"/>
+    <testcase name="cadastrarProdutoComSucesso" classname="br.com.serverest.api.produtos.ProdutosTest" time="0.759" displayname="cadastrarProdutoComSucesso()" uniqueid="[engine:junit-jupiter]/[class:br.com.serverest.api.produtos.ProdutosTest]/[method:cadastrarProdutoComSucesso()]"/>
+  </testsuite>
+</testrun>
